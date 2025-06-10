@@ -10,7 +10,7 @@ A modern fashion website showcasing vibrant African prints blended with contempo
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 
 ## Features
