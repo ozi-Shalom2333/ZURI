@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ZURI - A modern fashion brand blending vibrant African prints with contemporary silhouettes. Ethically crafted, endlessly elegant.">
+  <meta name="keywords" content="modern fashion, african print, ethical fashion, sustainable style, womenswear, ZURI">
+  <meta name="author" content="ZURI Fashion">
+  <title>ZURI - Woven with Culture. Designed for Today.</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      scroll-behavior: smooth;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.7;
+      color: #333;
+      background-color: #FDF5E6; 
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html, body {
+        scroll-behavior: auto;
+      }
+    }
+
+    html {
+      scroll-padding-top: 88px; 
+    }
+
+    
+    nav {
+      background-color: rgba(253, 245, 230, 0.85); 
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    nav.scrolled {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 25px;
+    }
+
+    .logo {
+      font-family: 'Lora', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #36454F; 
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 35px;
+    }
+
+    nav a {
+      color: #36454F;
+      text-decoration: none;
+      font-size: 16px;
+      padding-bottom: 5px;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: #D2B48C; 
+      transition: width 0.3s ease-in-out;
+    }
+    
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
+    }
+    
+    nav a:hover, nav a.active {
+      color: #000;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #36454F;
+    }
+
+    
+    .go-to-top {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #D2B48C;
+      color: white;
+      padding: 12px;
+      border-radius: 50%;
+      text-decoration: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+      z-index: 1000;
+      transform: translateY(10px);
+    }
+
+    .go-to-top.show-button {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .go-to-top:hover {
+      background-color: #36454F;
+      transform: translateY(-5px);
+    }
+
+    .go-to-top svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 25px;
+    }
+
+    section {
+      padding: 100px 20px;
+      min-height: auto;
+      text-align: center;
+    }
+    
+
+    #home {
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: url('https://placehold.co/1920x1080/2c3e50/ffffff?text=ZURI+Fashion+Model') no-repeat center center/cover;
+        background-image: url('img/scrollhero.avif');
+        color: white;
+        position: relative;
+        border-radius: 0 0 20px 20px;
+        overflow: hidden;
+    }
+    
+    #home::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(40, 40, 40, 0.4);
+    }
+    
+    #home > * {
+        position: relative;
+        z-index: 1;
+    }
+    
+    
+    #shop { background-color: #FFFFFF; }
+    #our-story { background-color: #FDF5E6; }
+    #our-story > p{
+        color: #555;
+    }
+    #contact { background-color: #EAE0D5;} 
+    #contact > p{
+        color: #555;
+    }
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 6vw;
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    h2 {
+      font-family: 'Lora', serif;
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #36454F;
+    }
+
+    p {
+      max-width: 650px;
+      margin: 0 auto 30px auto;
+      font-size: 18px;
+      color: #FFFFFF;
+    }
+
+    .cta-button {
+      background-color: #D2B48C;
+      color: white;
+      padding: 16px 36px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .cta-button:hover {
+      background-color: #36454F;
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-top: 50px;
+    }
+
+    .product-card {
+        background: #FDF5E6;
+        border-radius: 12px;
+        overflow: hidden;
+        text-align: left;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+    }
+
+    .product-card img {
+        width: 100%;
+        height: 380px;
+        object-fit: cover;
+    }
+
+    .product-info {
+        padding: 25px;
+    }
+
+    .product-title {
+        font-family: 'Lora', serif;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #36454F;
+    }
+
+    .product-price {
+        font-size: 18px;
+        color: #D2B48C;
+        font-weight: 700;
+    }
+
+    
+    footer {
+      background-color: #36454F;
+      color: #EAE0D5;
+      text-align: center;
+      padding: 50px 20px;
+      position: relative;
+    }
+    .social-links {
+      margin-bottom: 20px;
+    }
+    .social-links a {
+        color: #EAE0D5;
+        margin: 0 15px;
+        font-size: 22px;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    .social-links a:hover {
+        color: #D2B48C;
+    }
+    footer p {
+        font-size: 14px;
+        color: #aaa;
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 88px;
+        left: 0;
+        width: 100%;
+        background-color: #FDF5E6;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        gap: 15px;
+        text-align: center;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      h1 { font-size: 12vw; }
+      h2 { font-size: 38px; }
+      p { font-size: 16px; }
+      
+      section { padding: 80px 15px; }
+    }
+  </style>
+</head>
+<body>
+  
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="80" height="80">
+            <circle cx="100" cy="100" r="90" stroke="#D2B48C" stroke-width="6" fill="none"/>
+            <text x="100" y="115" text-anchor="middle" font-family="Lora, serif" font-size="42" fill="#36454F" letter-spacing="4">ZURI</text>
+        </svg>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-menu">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#our-story">Our Story</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  
+  <main>
+    <section id="home">
+      <h1>Woven with Culture.<br>Designed for Today.</h1>
+      <p>Discover a new era of style, where vibrant African heritage meets contemporary design. Ethically crafted, endlessly elegant.</p>
+      <a href="#shop" class="cta-button">Explore The Collection</a>
+    </section>
+
+    <section id="shop">
+        <h2>Latest Arrivals</h2>
+        <p>A curated selection of this season's essential pieces, designed with bold versatility and timeless elegance in mind.</p>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="img/TheAbaSilkBlouse.avif" alt="A woman wearing a vibrant print blouse" onerror="this.onerror=null;this.src='https://placehold.co/800x1000/d2b48c/ffffff?text=Aba+Blouse';">
+                <div class="product-info">
+                    <h3 class="product-title">The Aba Silk Blouse</h3>
+                    <p class="product-price">₦ 45,000</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="img/The Ife Maxi Dress.avif" alt="A woman wearing a long, flowing print dress" onerror="this.onerror=null;this.src='https://placehold.co/800x1000/36454f/ffffff?text=Ife+Dress';">
+                <div class="product-info">
+                    <h3 class="product-title">The Ife Maxi Dress</h3>
+                    <p class="product-price">₦ 72,000</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="img/The Lagos Wide-Leg Trousers.avif" alt="A woman wearing stylish wide-leg trousers" onerror="this.onerror=null;this.src='https://placehold.co/800x1000/eae0d5/36454f?text=Lagos+Trousers';">
+                <div class="product-info">
+                    <h3 class="product-title">The Lagos Wide-Leg Trousers</h3>
+                    <p class="product-price">₦ 58,000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="our-story">
+      <h2>The Heart of ZURI</h2>
+      <p>ZURI was founded on a simple belief: fashion should tell a story. Our story begins with the rich, diverse textiles of Africa, handcrafted by artisans who have passed down their skills for generations. We partner with these communities to bring you authentic prints, which we then reimagine into modern, wearable silhouettes. Every piece is a celebration of heritage, a commitment to ethical production, and a work of art designed for your life.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Connect With Us</h2>
+      <p>For customer service, press inquiries, or potential collaborations, we would love to hear from you. Let's create something beautiful together.</p>
+      <a href="mailto:okaozisol45@gmail.com" class="cta-button">Email Our Team</a>
+    </section>
+  </main>
+
+  
+  <a href="#" class="go-to-top" aria-label="Return to the top of the page" title="Go to top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 8.5L6 14.5L7.41 15.91L12 11.32L16.59 15.91L18 14.5L12 8.5Z"/>
+    </svg>
+  </a>
+
+  
+  <footer>
+    <div class="social-links">
+        <a href="#" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50"style="fill:#FFFFFF;">
+               <path d="M 16 3 C 8.8324839 3 3 8.8324839 3 16 L 3 34 C 3 41.167516 8.8324839 47 16 47 L 34 47 C 41.167516 47 47 41.167516 47 34 L 47 16 C 47 8.8324839 41.167516 3 34 3 L 16 3 z M 16 5 L 34 5 C 40.086484 5 45 9.9135161 45 16 L 45 34 C 45 40.086484 40.086484 45 34 45 L 16 45 C 9.9135161 45 5 40.086484 5 34 L 5 16 C 5 9.9135161 9.9135161 5 16 5 z M 37 11 A 2 2 0 0 0 35 13 A 2 2 0 0 0 37 15 A 2 2 0 0 0 39 13 A 2 2 0 0 0 37 11 z M 25 14 C 18.936712 14 14 18.936712 14 25 C 14 31.063288 18.936712 36 25 36 C 31.063288 36 36 31.063288 36 25 C 36 18.936712 31.063288 14 25 14 z M 25 16 C 29.982407 16 34 20.017593 34 25 C 34 29.982407 29.982407 34 25 34 C 20.017593 34 16 29.982407 16 25 C 16 20.017593 20.017593 16 25 16 z"></path>
+            </svg>  
+        </a>
+        <a href="#" aria-label="Pinterest">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50"style="fill:#FFFFFF;">
+               <path d="M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609825 4 46 13.390175 46 25 C 46 36.609825 36.609825 46 25 46 C 22.876355 46 20.82771 45.682142 18.896484 45.097656 C 19.75673 43.659418 20.867347 41.60359 21.308594 39.90625 C 21.570728 38.899887 22.648438 34.794922 22.648438 34.794922 C 23.348841 36.132057 25.395277 37.263672 27.574219 37.263672 C 34.058123 37.263672 38.732422 31.300682 38.732422 23.890625 C 38.732422 16.78653 32.935409 11.472656 25.476562 11.472656 C 16.196831 11.472656 11.271484 17.700825 11.271484 24.482422 C 11.271484 27.636307 12.94892 31.562193 15.634766 32.8125 C 16.041611 33.001865 16.260073 32.919834 16.353516 32.525391 C 16.425459 32.226044 16.788267 30.766792 16.951172 30.087891 C 17.003269 29.871239 16.978043 29.68405 16.802734 29.470703 C 15.913793 28.392399 15.201172 26.4118 15.201172 24.564453 C 15.201172 19.822048 18.791452 15.232422 24.908203 15.232422 C 30.18976 15.232422 33.888672 18.832872 33.888672 23.980469 C 33.888672 29.796219 30.95207 33.826172 27.130859 33.826172 C 25.020554 33.826172 23.440361 32.080359 23.947266 29.939453 C 24.555054 27.38426 25.728516 24.626944 25.728516 22.78125 C 25.728516 21.130713 24.842754 19.753906 23.007812 19.753906 C 20.850369 19.753906 19.117188 21.984457 19.117188 24.974609 C 19.117187 26.877359 19.761719 28.166016 19.761719 28.166016 C 19.761719 28.166016 17.630543 37.176514 17.240234 38.853516 C 16.849091 40.52931 16.953851 42.786365 17.115234 44.466797 C 9.421139 41.352465 4 33.819328 4 25 C 4 13.390175 13.390175 4 25 4 z"></path>
+            </svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 50 50"style="fill:#FFFFFF;">
+              <path d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z"></path>
+           </svg>
+        </a>
+    </div>
+    <p>&copy; 2025 ZURI. All rights reserved.</p>
+  </footer>
+
+  <script>
+    
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    
+    const button = document.querySelector('.go-to-top');
+    if (button) {
+      window.addEventListener('scroll', debounce(() => {
+        if (window.pageYOffset > window.innerHeight * 0.5) {
+          button.classList.add('show-button');
+        } else {
+          button.classList.remove('show-button');
+        }
+      }, 100));
+
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isActive = navMenu.classList.toggle('active');
+        menuToggle.textContent = isActive ? '✕' : '☰';
+        menuToggle.setAttribute('aria-expanded', isActive);
+      });
+    }
+
+  
+    const sections = document.querySelectorAll('main section');
+    const navLinks = document.querySelectorAll('nav a');
+    const observerOptions = {
+      root: null,
+      threshold: 0.5,
+      rootMargin: `-${document.querySelector('nav').offsetHeight}px 0px 0px 0px`
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach((link) => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => observer.observe(section));
+
+    
+    const nav = document.querySelector('nav');
+    if (nav) {
+        window.addEventListener('scroll', debounce(() => {
+            if (window.pageYOffset > 50) {
+              nav.classList.add('scrolled');
+            } else {
+              nav.classList.remove('scrolled');
+            }
+        }, 100));
+    }
+  </script>
+</body>
+</html>

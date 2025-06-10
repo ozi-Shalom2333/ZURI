@@ -1,0 +1,40 @@
+{
+  "name": "ZURI",
+  "short_name": "ZURI",
+  "description": "ZURI - A modern fashion brand blending vibrant African prints with contemporary silhouettes. Ethically crafted, endlessly elegant.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDF5E6", 
+  "theme_color": "#D2B48C",  
+  "icons": [
+    {
+      "src": "img/logopng.png", 
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/logopng.png", 
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    { 
+      "src": "img/logopng.png", 
+      "sizes": "512x512", 
+      "type": "image/png",
+      "purpose": "maskable" 
+    }
+
+  ],
+  "screenshots": [ 
+      {
+        "src": "img/screendesk.jpg",
+        "sizes": "1280x720",
+        "type": "image/jpg"
+      },
+      {
+        "src": "img/screenmob.jpg",
+        "sizes": "720x1280",
+        "type": "image/jpg"
+      }
+    ]
+}
